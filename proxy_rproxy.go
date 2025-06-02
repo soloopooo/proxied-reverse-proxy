@@ -34,7 +34,7 @@ func customErrorHandler(w http.ResponseWriter, r *http.Request, err error) {
 // Reverse Proxy
 func main() {
  reverseListenFlag := flag.String("reverse-listen", "127.0.0.1:8082", "Listen address for reverse proxy")
- forwardListenFlag := flag.String("forward-listen", "http://127.0.0.1:8080", "Listen address for forward proxy")
+ remoteForwardFlag := flag.String("remote-forward", "http://127.0.0.1:8080", "Remote services that will be proxied")
  proxyFlag := flag.String("proxy", "http://127.0.0.1:8088", "Proxy address in format http://host:port or socks5://host:port") // socks or http proxy that will be used for forwarding requests
  allowInsecureFlag := flag.Bool("allow-insecure", false, "Allow insecure or self-signed SSL connections to forward proxy")
  httpsFlag := flag.Bool("https", false, "Use HTTPS for reverse proxy")
@@ -42,7 +42,7 @@ func main() {
  keyFlag := flag.String("key", "server.key", "Key file for HTTPS reverse proxy")
  flag.Parse()
 
- target, err := url.Parse(*forwardListenFlag)
+ target, err := url.Parse(*remoteForwardFlag)
  if err != nil {
   log.Fatal(err)
  }
