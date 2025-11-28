@@ -1,0 +1,11 @@
+__debug_bin.exe
+googlevideo.com.crt
+googlevideo.com.csr
+googlevideo.com.key
+rootCA.crt
+rootCA.key
+rootCA.srl
+server.crt
+server.key
+v3.ext
+.vscode/**
